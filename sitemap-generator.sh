@@ -14,7 +14,6 @@ log() {
 }
 
 show_help() {
-    echo "${green}[HELP]${reset} Help:"
     echo "Usage: $0 [OPTIONS] url"
     echo ""
     echo "Options:"
