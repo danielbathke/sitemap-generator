@@ -10,7 +10,21 @@ die() {
 }
 
 log() {
-    $VERBOSE && echo "${green}[INFO]${reset} $1" > /dev/stdout
+    $VERBOSE && echo "${green}[INFO]${reset} $1"
+}
+
+show_help() {
+    echo "${green}[HELP]${reset} Help:"
+    echo "Usage: $0 [OPTIONS] url"
+    echo ""
+    echo "Options:"
+    echo " -o,  --output     Define output filename. Default: sitemap.xml"
+    echo " -f,  --frequency  Define URLs frequency. Default: monthly"
+    echo "                   See: http://www.sitemaps.org/protocol.html#changefreqdef"
+    echo " -p,  --priority   Define the priority for all urls. Default 0.8"
+    echo "                   See: http://www.sitemaps.org/protocol.html#prioritydef"
+    echo " -h,  --help       See this help"
+    exit 0
 }
 
 URL=
@@ -27,12 +41,13 @@ while true; do
         -o | --output ) OUTPUT="$2"; shift 2 ;;
         -f | --frequency ) FREQUENCY="$2"; shift 2 ;;
         -p | --priority ) PRIORITY="$2"; shift 2 ;;
+        -h | --help ) show_help; shift 1;;
         * ) URL="$1"; break ;;
     esac
 done
 
 if [ -z "$URL" ]; then
-    die "Usage: $0 [OPTIONS] url"
+    die "Usage: $0 [OPTIONS] url.\nTry $0 --help for more informations."
 fi
 
 TMP_TXT_FILE=$OUTPUT.txt
