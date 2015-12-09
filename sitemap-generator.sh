@@ -55,11 +55,10 @@ SED_LOG_FILE=$OUTPUT.sedlog.txt
 log "URL: $URL"
 log "Output: $OUTPUT"
 log "Frequency: $FREQUENCY"
-log "Priority: $PRIORITY"
-echo ""
+log "Priority: $PRIORITY\n"
 
 log "Crawling $URL => $TMP_TXT_FILE ..."
-wget --spider --recursive --output-file=$TMP_TXT_FILE --no-verbose --reject=.jpg,.jpeg,.css,.js,.ico,.png $URL
+wget --spider --recursive --output-file=$TMP_TXT_FILE --no-verbose --reject=.jpg,.jpeg,.css,.js,.ico,.png,.gif,.swf $URL
 
 log "Cleaning urls ..."
 sed -n "s@.\+ URL:\([^ ]\+\) .\+@\1@p" $TMP_TXT_FILE | sed "s@&@\&amp;@" > $SED_LOG_FILE
@@ -73,9 +72,7 @@ awk '{print "\t<url><loc>"$0"</loc><lastmod>'$DATE'</lastmod><changefreq>monthly
 
 echo '</urlset>' >> $OUTPUT
 
-log "Cleaning temp files ..."
+log "Cleaning temp files ...\n"
 rm -f $TMP_TXT_FILE  $SED_LOG_FILE
 
-echo ""
 log "Done => $OUTPUT"
-echo ""
