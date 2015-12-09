@@ -76,3 +76,4 @@ log "Cleaning temp files ...\n"
 rm -f $TMP_TXT_FILE  $SED_LOG_FILE
 
 log "Done => $OUTPUT"
+log "Found $((`cat $OUTPUT | wc -l` - 3)) urls\n"
