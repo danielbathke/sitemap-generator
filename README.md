@@ -1,9 +1,9 @@
-sitemap-generator
+Sitemap Generator
 =================
 
-This is a fork of https://github.com/danielbathke/sitemap-generator. The purpose of this fork is to provide some dynamic control over the priority. The input URL and first level pages are priority 1. The rest of the sitemap will get priority 0.8. 
+This is a fork of https://github.com/danielbathke/sitemap-generator. The purpose of this fork is to provide some dynamic control over the priority. The input URL and first level pages are priority 1. The rest of the sitemap will get priority 0.8. As a result, option `-p` has been removed. 
 
-As a result, option `-p` has been removed. 
+Setting the priority like this [lets the search engines know which pages you deem most important for the crawlers](https://www.sitemaps.org/protocol.html#prioritydef). Typically first level pages and categories are most important.
 
 ## Installation
 
